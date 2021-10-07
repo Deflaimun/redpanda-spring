@@ -1,5 +1,6 @@
-package com.example.demo;
+package com.example.demo.config;
 
+import com.example.demo.Constants;
 import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
-public class InitialConfig {
+public class KafkaAdminConfig {
 
     @Value(value = "${spring.kafka.bootstrap-servers}")
     private String bootstrapAddress;
@@ -23,8 +24,10 @@ public class InitialConfig {
         return new KafkaAdmin(configs);
     }
 
+    //if you don't have any topic created
+    //this bean will see if there's a topic already created, if not, it will create it
     @Bean
-    public NewTopic topic1() {
-        return new NewTopic("twitch", 1, (short) 1);
+    public NewTopic initialTopic() {
+        return new NewTopic(Constants.TOPIC, Constants.NUM_PARTITIONS,  Constants.REPLICATION_FACTOR);
     }
 }

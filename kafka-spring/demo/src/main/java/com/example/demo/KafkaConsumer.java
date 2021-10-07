@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 public class KafkaConsumer {
 
 
-    @KafkaListener(topics = "twitch", groupId = "myGroup")
+    @KafkaListener(topics = Constants.TOPIC, groupId = Constants.GROUP_ID)
     public void listenGroupFoo(String message) {
         System.out.println("Received Message in group myGroup: " + message);
     }
