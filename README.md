@@ -13,13 +13,14 @@ Now that I have your attention, let’s get started on using it!
 [TL;DR version](#tldr)  
 It is recommended that you use a Linux-based machine to develop and operate it (I mean, who’s buying Windows’ license in a cloud environment anyway?), but if you’re a stubborn Windows user like myself, I got you covered.  
 Alright, so for Linux users this part is extremely easy, and you just have to use this command below.  
-'''console
+```console
 curl -1sLf 'https://packages.vectorized.io/nzc4ZYQK3WRGd9sy/redpanda/cfg/setup/bash.rpm.sh' | sudo -E bash && sudo yum install redpanda -y && sudo systemctl start redpanda   
-'''
-...and boom! It’s ready to use!
-If you’re a Windows user, you have a nice workaround. This will require that you have installed at your machine WSDL2 (https://docs.microsoft.com/en-us/windows/wsl/install) and Docker for Windows (https://docs.docker.com/desktop/windows/install/). Don’t forget that in order for Docker for Windows to work out, you have to enable your Hipervisor service at the Control Panel. More on that here (https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v) 
+```
+...and boom! It’s ready to use!   
+If you’re a Windows user, you have a nice workaround. This will require that you have installed at your machine [WSDL2](https://docs.microsoft.com/en-us/windows/wsl/install) and [Docker for Windows](https://docs.docker.com/desktop/windows/install/). Don’t forget that in order for Docker for Windows to work out, you have to enable your Hipervisor service at the Control Panel. [More on that here](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v) 
 
-With Docker installed and ready to use, copy and paste this docker-compose file 
+With Docker installed and ready to use, copy and paste this docker compose
+```console 
 version: '3.7'
 services:
   redpanda:
@@ -43,10 +44,12 @@ services:
     ports:
     - 9092:9092
     - 29092:29092
+```   
+Save it as docker-compose.yml   
+In the directory that you saved the file, open your CMD.    
+One neat trick to open the CMD at the directory that you want is to open Windows Explorer at that directory.
+![](https://github.com/[username]/[reponame]/blob/[branch]/image.jpg?raw=true)
 
-Save it as docker-compose.yml
-In the directory that you saved the file, open your CMD. 
-(One neat trick to open the CMD at the directory that you want is to open Windows Explorer at that directory.)
  
 Click at the address bar. And change it to cmd.exe. Then it will open your CMD at your directory level. 
  
