@@ -1,6 +1,6 @@
-##Intro
+##  Intro
 So, you’ve chosen Kafka as your messenger service, but you keep hearing about all of its headaches, like using Zookeeper and issues regarding rebalancing. Well, Vectorized’s Redpanda got you covered.
-####What exactly RedPanda is and why is it better than the others?
+### _What exactly RedPanda is and why is it better than the others?_
 Redpanda is a streaming platform, 100% Kafka API compatible for mission-critical workloads built for modern apps. Their pros include: 
 -	Reliable message delivery 
 -	10x faster speed than regular Kafka
@@ -8,12 +8,14 @@ Redpanda is a streaming platform, 100% Kafka API compatible for mission-critical
 -	Reduced operational complexity 
 -	Production ready
 
-##First Steps
-Now that I have your attention, let’s get started on using it! 
-TL;DR version
-It is recommended that you use a Linux-based machine to develop and operate it (I mean, who’s buying Windows’ license in a cloud environment anyway?), but if you’re a stubborn Windows user like myself, I got you covered. 
-Alright, so for Linux users this part is extremely easy, and you just have to use this command below.
-curl -1sLf 'https://packages.vectorized.io/nzc4ZYQK3WRGd9sy/redpanda/cfg/setup/bash.rpm.sh' | sudo -E bash && sudo yum install redpanda -y && sudo systemctl start redpanda
+##  First Steps
+Now that I have your attention, let’s get started on using it!  
+[TL;DR version](#tldr)  
+It is recommended that you use a Linux-based machine to develop and operate it (I mean, who’s buying Windows’ license in a cloud environment anyway?), but if you’re a stubborn Windows user like myself, I got you covered.  
+Alright, so for Linux users this part is extremely easy, and you just have to use this command below.  
+'''console
+curl -1sLf 'https://packages.vectorized.io/nzc4ZYQK3WRGd9sy/redpanda/cfg/setup/bash.rpm.sh' | sudo -E bash && sudo yum install redpanda -y && sudo systemctl start redpanda   
+'''
 ...and boom! It’s ready to use!
 If you’re a Windows user, you have a nice workaround. This will require that you have installed at your machine WSDL2 (https://docs.microsoft.com/en-us/windows/wsl/install) and Docker for Windows (https://docs.docker.com/desktop/windows/install/). Don’t forget that in order for Docker for Windows to work out, you have to enable your Hipervisor service at the Control Panel. More on that here (https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v) 
 
@@ -56,7 +58,7 @@ If everything is correct, you’ll see this beautiful screen
 And if you’re skeptical, like me, you might wanna check Docker for Desktop too.
  
 And now it’s all good. It’s already ready to use.
-##Start streaming
+## Start streaming
 Now, Linux users have it easier again, because the official docs make it very very easy to do some testing. We don’t have anything official for Windows yet. So if you know any good replacement for rpk on Windows, let me know.
 At Linux,
 1-  Create a topic running this: 
@@ -79,7 +81,7 @@ Each message should be something like this
 "offset": 1,
 "timestamp": "2021-02-10T15:52:35.251+02:00"
 }
-##Using a client
+## Using a client
 Now that everything is good and running, let’s attach a client and actually see the magic happening. BTW, here’s a list of officially supported clients (https://vectorized.io/docs/faq/#What-clients-do-you-recommend-to-use-with-Redpanda)
 For this tutorial, I’ll use Java (yeah, I know, I know….) 
 So, let’s jump into Spring Initializr (https://start.spring.io/) and start exploring. On the dependencies page make sure you have at least Spring for Apache Kafka.
@@ -91,7 +93,7 @@ Save it any place that you want (I used the same folder as our docker-compose.ym
 Open your project with the pom.xml file
  
 Select “Open as Project” and let’s start building some stuff.
-##First configs in our Java Client
+## First configs in our Java Client
 Let’s start off by creating our KafkaAdminConfig class
 This class will help us to create our first topic (if there’s none).
 @Configuration
@@ -124,7 +126,7 @@ public class Constants {
 Don’t forget to fill your application.properties file with this. You can even put your groupID here if you want.
 spring.kafka.bootstrap-servers=localhost:9092
 
-##Creating a producer
+## Creating a producer
 Our producer class will look like this.
 @Configuration
 public class KafkaProducerConfig {
@@ -192,7 +194,7 @@ If everything is correct, you should be able to start your application through t
 To check if everything is correct, send a message to yourself.
 curl --location --request POST 'http://localhost:8080/publish?message=Hey,%20it%20works!'
 But, sending messages without no one listening is no fun, so let’s create a consumer.
-##Creating a Consumer
+## Creating a Consumer
 Let’s do some small housekeeping again, by creating our KafkaConsumerConfig class
 @EnableKafka
 @Configuration
@@ -253,7 +255,7 @@ https://vectorizedcommunity.slack.com/ssb/redirect
 And check their code at GitHub
 https://github.com/vectorizedio/redpanda
 
-##TL;DR
+## TL;DR
 Clone this repo (https://github.com/Deflaimun/redpanda-spring)
 Hit docker-compose up –d
 And start using your Java Client!
