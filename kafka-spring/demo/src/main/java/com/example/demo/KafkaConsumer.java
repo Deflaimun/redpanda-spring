@@ -1,9 +1,10 @@
 package com.example.demo;
 
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-@Service
+@Component
 public class KafkaConsumer {
 
 
