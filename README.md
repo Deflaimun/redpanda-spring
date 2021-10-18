@@ -89,7 +89,7 @@ Press Ctrl + C to exit the produce command.
 4. Consume (or read) the messages in the topic:
 ```console
 docker exec -it redpanda-1 \
-rpk topic consume twitch_chat --brokers=localhost:9092
+rpk topic consume my_topic --brokers=localhost:9092
 ```
 
 Each message should be something like this   
