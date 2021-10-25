@@ -44,7 +44,7 @@ services:
     - --advertise-kafka-addr
     - PLAINTEXT://redpanda:29092,OUTSIDE://localhost:9092
     # NOTE: Please use the latest version here!
-    image: docker.vectorized.io/vectorized/redpanda:v21.7.6
+    image: docker.vectorized.io/vectorized/redpanda:v21.9.5
     container_name: redpanda-1
     ports:
     - 9092:9092
@@ -140,7 +140,8 @@ public class KafkaAdminConfig {
     public NewTopic initialTopic() {
         return new NewTopic(Constants.TOPIC, Constants.NUM_PARTITIONS,  Constants.REPLICATION_FACTOR);
     }
-```   
+}
+``` 
 For better maintainability I created a **Constants** file too that contains this:  
 ```java 
 public class Constants {
@@ -222,7 +223,7 @@ public class KafkaController {
             kafkaPublisher.sendMessage(Constants.TOPIC,message);
             return ResponseEntity.ok(null);
 
-        }catch (Exception e ){
+        } catch (Exception e ){
             return ResponseEntity.internalServerError().body(e.getLocalizedMessage());
         }
     }
