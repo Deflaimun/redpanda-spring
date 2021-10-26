@@ -7,7 +7,7 @@ Redpanda is a streaming platform, 100% Kafka API compatible for mission-critical
 -	Ultra-low latencies (due to their thread-per-core architecture) 
 -	Reduced operational complexity 
 -	Production ready
--   Is [Open-Source](https://github.com/vectorizedio/redpanda)
+-   Is [free and source available](https://github.com/vectorizedio/redpanda)
 
 ##  First Steps
 Now that I have your attention, let’s get started on using it!  
