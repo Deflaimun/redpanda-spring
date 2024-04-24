@@ -1,5 +1,3 @@
-name: 📚 Documentation update request
-description: Suggest a change to existing Redpanda documentation.
 body:
   - type: markdown
     attributes:
